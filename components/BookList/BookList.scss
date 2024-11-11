@@ -1,0 +1,135 @@
+.book-list {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 rem(-24);
+
+	@include media-breakpoint-down(md) {
+		margin: 0 rem(-16);
+	}
+
+	@include media-breakpoint-down(sm) {
+		flex-direction: column;
+		margin: 0;
+	}
+
+	&__item {
+		position: relative;
+		padding: rem(24);
+		flex: 0 0 25%;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			background-color: $color-gray-8;
+		}
+
+		&::before {
+			top: 0;
+			left: rem(0);
+			right: rem(0);
+			height: 1px;
+		}
+
+		&::after {
+			top: rem(24);
+			right: 0;
+			bottom: rem(24);
+			width: 1px;
+		}
+
+		@include first-last-row-item(1, 4) {
+			&::before {
+				left: rem(24);
+			}
+		}
+
+		@include first-last-row-item(4, 4) {
+			&::before {
+				right: rem(24);
+			}
+			&::after {
+				display: none;
+			}
+		}
+
+		&:nth-child(-n + 4) {
+			&::before {
+				display: none;
+			}
+		}
+
+		@include media-breakpoint-down(md) {
+			padding: rem(16);
+			flex: 0 0 50%;
+
+			&::after {
+				top: rem(16);
+				bottom: rem(16);
+			}
+
+			@include first-last-row-item(1, 4) {
+				&::before {
+					left: 0;
+				}
+			}
+
+			@include first-last-row-item(4, 4) {
+				&::before {
+					right: 0;
+				}
+
+				&::after {
+					display: initial;
+				}
+			}
+
+			&:nth-child(-n + 4) {
+				&::before {
+					display: initial;
+				}
+			}
+
+			&:nth-child(odd) {
+				&::before {
+					left: rem(16);
+				}
+			}
+
+			&:nth-child(even) {
+				&::before {
+					right: rem(16);
+				}
+				&::after {
+					display: none;
+				}
+			}
+
+			&:nth-child(-n + 2) {
+				&::before {
+					display: none;
+				}
+			}
+		}
+
+		@include media-breakpoint-down(sm) {
+			flex-direction: column;
+			padding: rem(20) 0;
+			border-bottom: 1px solid $color-gray-8;
+
+			&::after {
+				display: none;
+			}
+
+			@include first-last-row-item(4, 4) {
+				&::after {
+					display: none;
+				}
+			}
+
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+}

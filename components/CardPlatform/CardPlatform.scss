@@ -1,0 +1,93 @@
+.card-platform {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	&__cover {
+		width: 100%;
+		height: rem(600);
+
+		@include media-breakpoint-down(md) {
+			height: rem(430);
+		}
+
+		@include media-breakpoint-down(sm) {
+			height: rem(328);
+		}
+
+		&-img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__type {
+		margin-top: rem(16);
+		margin-bottom: rem(16);
+
+		@include media-breakpoint-down(sm) {
+			margin-top: rem(12);
+			margin-bottom: rem(12);
+		}
+	}
+
+	&__title {
+		margin-bottom: rem(32);
+		min-height: rem(112);
+
+		@include h3;
+
+		@include media-breakpoint-down(md) {
+			min-height: 0;
+		}
+
+		@include media-breakpoint-down(sm) {
+			margin-bottom: rem(24);
+		}
+	}
+
+	&__second-title {
+		font-style: italic;
+	}
+
+	&__bottom {
+		margin-top: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: rem(8);
+	}
+
+	&__location {
+		@include caption-1;
+	}
+
+	&__city {
+		color: $color-text-secondary;
+
+		@include caption-1;
+	}
+
+	&__action {
+		min-width: rem(40);
+		width: rem(40);
+		height: rem(40);
+
+		&-btn.button {
+			min-width: 100%;
+			height: 100%;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}

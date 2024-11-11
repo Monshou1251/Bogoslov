@@ -1,0 +1,8 @@
+.card-type {
+	display: flex;
+	align-items: center;
+	gap: rem(4);
+	color: $color-text-secondary;
+
+	@include caption-2;
+}

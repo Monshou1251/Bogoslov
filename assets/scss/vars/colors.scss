@@ -1,0 +1,62 @@
+// Primitives
+$color-white: #fff;
+$color-black: #000;
+
+$color-cool-gray: #E5E9EC;
+$color-gray-4: #F5F6F7;
+$color-gray-8: #EBECED;
+$color-gray-16: #D6D7D8;
+$color-gray-20: #C9CACB;
+$color-gray-40: #8F9091;
+$color-gray-80: #272829;
+$color-white-12: #414243;
+$color-red: #E54322;
+$color-bronze: #BF9373;
+
+
+// Semantic
+$color-primary: $color-gray-80;
+$color-secondary: $color-gray-40;
+$color-accent: $color-red;
+
+// Text
+$color-text-primary: $color-gray-80;
+$color-text-secondary: $color-gray-40;
+$color-text-interactive: $color-red;
+
+// Background
+$color-bg-level-1: $color-white;
+$color-bg-level-2: $color-gray-80;
+$color-bg-level-3: $color-gray-4;
+
+// Icon
+$color-icon-primary: $color-gray-80;
+$color-icon-secondary: $color-gray-40;
+$color-icon-light: $color-gray-16;
+$color-icon-accent: $color-red;
+
+// System colors
+$color-success: #24A148;
+$color-info: #268BE9;
+$color-warning: #EFA40A;
+$color-error: $color-red;
+
+// Button
+$color-button-primary: $color-gray-4;
+$color-button-secondary: $color-gray-80;
+$color-button-disabled: $color-gray-20;
+
+// Borders
+$color-border-base: $color-gray-8;
+$color-border-strong: $color-gray-80;
+
+
+// Color system (.bg-white, .color-white)
+$colors: (
+	"white": $color-white,
+	"black": $color-black,
+
+	"cool-gray": $color-cool-gray,
+
+	//TODO: Color system
+);

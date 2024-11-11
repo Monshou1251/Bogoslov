@@ -1,0 +1,81 @@
+.partners-block {
+	position: relative;
+	display: grid;
+	gap: 0;
+	grid-template-columns: repeat(5, 1fr);
+
+	&::after {
+		content: "";
+		position: absolute;
+		right: 0;
+		height: 1px;
+		bottom: 0;
+		width: 100%;
+		background-color: $color-gray-8;
+	}
+
+	@include media-breakpoint-down(md) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@include media-breakpoint-down(sm) {
+		grid-template-columns: 1fr;
+	}
+
+	&__el {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: rem(168);
+		padding-top: rem(24);
+		padding-bottom: rem(24);
+		position: relative;
+		border-bottom: 1px solid $color-gray-8;
+
+		&::after {
+			content: "";
+			position: absolute;
+			right: 0;
+			top: rem(24);
+			bottom: rem(24);
+			width: 1px;
+			background-color: $color-gray-8;
+		}
+
+		&:nth-child(5n) {
+			&::after {
+				display: none;
+			}
+		}
+
+		@include media-breakpoint-down(md) {
+			&:nth-child(5n) {
+				&::after {
+					display: block;
+				}
+			}
+
+			&:nth-child(3n) {
+				&::after {
+					display: none;
+				}
+			}
+		}
+
+		@include media-breakpoint-down(sm) {
+      height: rem(80);
+      padding: 0;
+
+			&:nth-child(5n) {
+				&::after {
+					display: none;
+				}
+			}
+
+			&::after {
+				display: none;
+			}
+		}
+	}
+}

@@ -1,0 +1,15 @@
+.events-calendar{
+  &__month{
+    &-title{
+      padding-top: rem(40);
+      padding-bottom: rem(12);
+      border-bottom: 1px solid $color-border-strong;
+      @include h4-secondary();
+    }
+
+    &-cnt{
+      @include number-2();
+      color: $color-secondary;
+    }
+  }
+}

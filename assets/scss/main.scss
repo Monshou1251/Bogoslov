@@ -1,0 +1,10 @@
+/*
+ * vars, mixins are included in nuxt.config.js in styleResources prop
+*/
+//@import "vars/index";
+//@import "mixins/index";
+
+
+@import "base/index";
+@import "utils/index";
+@import "libs/index";

@@ -1,0 +1,35 @@
+.button-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: rem(24);
+	width: rem(24);
+	border: 1px solid $color-icon-light;
+	appearance: none;
+	outline: none;
+	font-size: rem(12);
+	transition: all 0.3s ease;
+	background-color: transparent;
+
+	&--sm {
+		height: rem(32);
+		width: rem(32);
+		font-size: rem(16);
+	}
+
+	&--md {
+		height: rem(40);
+		width: rem(40);
+		font-size: rem(16);
+	}
+
+	&--lg {
+		height: rem(48);
+		width: rem(48);
+		font-size: rem(20);
+	}
+
+	&:hover:not(:disabled) {
+		background-color: $color-bg-level-3;
+	}
+}

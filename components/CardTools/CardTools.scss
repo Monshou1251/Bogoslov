@@ -1,0 +1,31 @@
+.card-tools {
+    height: rem(720);
+    background: center / cover no-repeat url("/images/books.svg");
+    display: flex;
+
+    &__item {
+        border-right:1px solid $color-white-12 ;
+
+        &:last-child {
+            border-right: none; 
+        }
+
+        @include media-breakpoint-down(md) {
+            height: rem(1264);
+            border-bottom:1px solid $color-white-12 ;
+            border-right: none; 
+
+            &:last-child {
+                border-bottom: none; 
+            }
+        }
+
+    }
+
+    @include media-breakpoint-down(md) {
+        flex-direction: column;
+        height: rem(1264);
+        
+    }
+
+}

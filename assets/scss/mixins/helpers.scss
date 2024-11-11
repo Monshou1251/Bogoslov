@@ -1,0 +1,64 @@
+$easing: ease;
+$timing: 0.3s;
+
+@mixin hover {
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			@content;
+		}
+	}
+}
+
+@mixin touchDevice {
+	@media (hover: none) and (pointer: coarse) {
+		@content;
+	}
+}
+
+@mixin notTouchDevice {
+	@media (hover: hover) and (pointer: fine) {
+		@content;
+	}
+}
+
+@mixin defaultTransition($args...) {
+	transition-timing-function: $easing;
+	transition-duration: $timing;
+	transition-property: $args;
+}
+
+@mixin last-row($count) { // Для элементов в последнем ряду, $count - максимальное количество элементов в ряду
+	&:nth-child(#{$count}n+1):nth-last-child(-n+#{$count}),
+	&:nth-child(#{$count}n+1):nth-last-child(-n+#{$count}) ~ & {
+		@content;
+	}
+}
+
+@mixin last-row-with-item($count, $item) {
+	&:nth-child(#{$count}n+1):nth-last-child(-n+#{$count}),
+	&:nth-child(#{$count}n+1):nth-last-child(-n+#{$count}) ~ #{$item} {
+		@content;
+	}
+}
+
+@mixin first-last-row-item($index, $count) { // Для первого (1, $count) и последнего ($count, $count) элемента в ряду, $count - максимальное количество элементов в ряду
+	&:nth-child(#{$count}n - #{$count - $index}) {
+		@content;
+	}
+}
+
+@mixin line-clamp(
+	$font-size,
+	$line-height,
+	$lines-to-show
+) {
+	display: block;
+	display: -webkit-box;
+	font-size: #{$font-size}px;
+	max-height: #{$font-size * $line-height * $lines-to-show}px;
+	line-height: $line-height;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $lines-to-show;
+}

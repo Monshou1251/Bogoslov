@@ -1,0 +1,99 @@
+.field-select{
+    $root: &;
+    position: relative;
+
+    &.--theme-white{
+        #{$root}__title, #{$root}__icon{
+            color: $color-white;
+        }
+    }
+
+    &.--is-opened{
+        #{$root}__icon{
+            transform: rotate(180deg);
+        }
+    }
+
+    &.--pos{
+        &-left {
+            #{$root}__options{
+                left: 0;
+            }
+		}
+
+		&-right {
+			#{$root}__options{
+                right: 0;
+            }
+		}
+    }
+
+    &__value{
+        padding: rem(20) 0;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+
+        @include media-breakpoint-down(sm){
+            padding: rem(16) 0;
+        }
+    }
+
+    &__title{
+        @include caption-menu;
+    }
+
+    &__icon{
+        font-size: 24px;
+		transition: 0.3s ease-in-out;
+    }
+
+    &__options{
+        position: absolute;
+        z-index: 11;
+        top: 100%;
+        right: 0;
+        box-shadow: 4px 4px 24px 0px #00000029;
+    }
+
+    &__list{
+        background-color: $color-white;
+    }
+
+    &__item{
+        padding: rem(12) rem(16);
+
+        font-family: $font-secondary;
+        font-size: rem(13);
+        color: $color-primary;
+
+        cursor: pointer;
+        transition: .3s;
+
+        &:hover{
+            background-color: $color-border-base;
+        }
+
+        &:not(:last-child){
+            border-bottom: 1px solid $color-border-base;
+        }
+
+        &.--selected{
+            background-color: $color-border-base;
+        }
+    }
+}
+
+// Animation
+.slide-fade-leave-active,
+.slide-fade-enter-active {
+    transition: all 0.3s ease;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateY(10px);
+    opacity: 0;
+}

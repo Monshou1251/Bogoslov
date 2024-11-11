@@ -1,0 +1,175 @@
+.header {
+  $root: &;
+  color: $color-white;
+  font-size: rem(36);
+  position: relative; 
+  
+  // z-index: 1000; 
+
+  &.dark {
+    background-color: $color-primary;
+
+    #{$root}__top::after {
+      // display: none;
+    }
+
+    #{$root}__bottom .logo {
+      color: $color-primary;
+    }
+
+    #{$root}__bottom {
+      background-color: $color-white;
+      border-top-left-radius: 28px;
+      border-top-right-radius: 28px;
+      font-size: rem(36);
+      color: $color-primary;
+
+      &-title {
+        background-color: $color-primary;
+        color: $color-primary;
+      }
+
+    }
+  }
+
+  &__side-wrap {
+    width: rem(300);
+
+    @include media-breakpoint-down(md) {
+      width: rem(161);
+    }
+
+    &:not(.--left) {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &.--left {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+  }
+
+  &__top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1; 
+
+    &::after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      margin: 0 rem(32);
+      width: calc(100% - rem(64));
+      height: 1px;
+
+      background-color: rgba($color-white, 0.2);
+      transition: .3s;
+      will-change: transform;
+      transform: translateZ(0);
+
+      @include media-breakpoint-down(md){
+        margin: 0 rem(24);
+        width: calc(100% - rem(48));
+      }
+
+      @include media-breakpoint-down(sm){
+        margin: 0 rem(16);
+        width: calc(100% - rem(32));
+      }
+    }
+  }
+
+  &__bottom {
+    padding-top: rem(60);
+    margin-bottom: rem(32);
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+
+    &-title {
+      width: 100%;
+      text-align: center;
+      color: transparent;
+      background: linear-gradient(to right, #4b4b4d 50%, #d3d3d3 50%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      background-size: 200%; // Allow space for animation to move the gradient
+      background-position: 100%; // Start position
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    @include media-breakpoint-down(sm) {
+      padding-top: rem(44);
+      margin-bottom: rem(24);
+
+      .logo {
+        :deep(svg) {
+          width: rem(286) !important;
+          height: rem(28) !important;
+        }
+      }
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: rem(8);
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
+  &__select {
+    display: none;
+
+    @include media-breakpoint-down(sm) {
+      display: block;
+
+      :deep(.field-select__title) {
+        @include caption-2;
+      }
+
+      :deep(.field-select__icon) {
+        font-size: rem(16);
+      }
+    }
+  }
+
+  &__links,
+  &__right {
+    display: flex;
+    gap: rem(24);
+
+    @include media-breakpoint-only(md) {
+      gap: rem(16);
+    }
+  }
+
+  &__links {
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
+  &__link {
+    @include caption-2();
+    color: $color-gray-40;
+
+    a {
+      color: $color-white;
+      transition: 0.3s;
+
+      &:hover {
+        color: $color-gray-40;
+      }
+    }
+  }
+}

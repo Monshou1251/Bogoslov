@@ -1,0 +1,27 @@
+.button-favorite {
+    $root: &;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: rem(40);
+	height: rem(40);
+	border: 1px solid $color-gray-16;
+	cursor: pointer;
+
+	.icon--active {
+		color: $color-icon-accent;
+	}
+
+	@include hover {
+		&:not(#{$root}--disabled):not(:disabled) {
+			background-color: $color-bg-level-3;
+			border: 1px solid $color-gray-16;
+		}
+	}
+
+    @include media-breakpoint-down(sm) {
+        height: rem(32);
+        width: rem(32);
+    }
+}

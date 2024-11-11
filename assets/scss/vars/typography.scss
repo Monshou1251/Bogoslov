@@ -1,0 +1,11 @@
+// Safe Web-fonts
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+
+// Primitives
+$font-sang-bleu: 'SangBleu Republic', $font-family-sans-serif;
+$font-suisse-intl: 'Suisse Intl', $font-family-sans-serif;
+
+// Semantic
+$font-primary: $font-sang-bleu;
+$font-secondary: $font-suisse-intl;

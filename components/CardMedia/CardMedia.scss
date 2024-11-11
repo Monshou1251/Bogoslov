@@ -1,0 +1,158 @@
+.card-media {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	&__subject {
+		display: flex;
+		gap: rem(25);
+		margin-bottom: rem(16);
+		color: $color-text-interactive;
+
+		@include caption-2;
+
+		@include media-breakpoint-down(sm) {
+			margin-bottom: rem(12);
+		}
+
+		span:first-child {
+			position: relative;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				right: rem(-15);
+				width: rem(5);
+				height: rem(5);
+				background-color: $color-text-interactive;
+				border-radius: 50%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+
+	&__cover {
+		height: rem(320);
+		display: flex;
+		gap: rem(8);
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background-color: $color-cool-gray;
+		margin-bottom: rem(16);
+
+		@include media-breakpoint-down(md) {
+			height: rem(230);
+		}
+
+		@include media-breakpoint-down(sm) {
+			height: rem(220);
+		}
+
+		&-img {
+			display: block;
+			object-fit: cover;
+
+			&--audio {
+				border-radius: 50%;
+				width: rem(212);
+				height: rem(212);
+
+				@include media-breakpoint-down(md) {
+					width: rem(152);
+					height: rem(152);
+				}
+
+				@include media-breakpoint-down(sm) {
+					width: rem(145);
+					height: rem(145);
+				}
+			}
+
+			&--video {
+				max-width: rem(360);
+				width: 100%;
+				height: rem(202);
+
+				@include media-breakpoint-down(md) {
+					max-width: rem(261);
+					width: 100%;
+					height: rem(145);
+				}
+
+				@include media-breakpoint-down(sm) {
+					max-width: rem(261);
+					width: 100%;
+					height: rem(145);
+				}
+			}
+		}
+	}
+
+	&__duration {
+		display: flex;
+		gap: 4px;
+		align-items: center;
+
+		@include caption-2;
+	}
+
+	&__content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		margin-bottom: rem(32);
+
+		@include media-breakpoint-down(md) {
+			margin-bottom: rem(32);
+		}
+
+		@include media-breakpoint-down(sm) {
+			margin-bottom: rem(24);
+		}
+	}
+
+	&__title {
+		@include h3;
+	}
+
+	&__subtitle {
+		font-style: italic;
+
+		@include h3;
+	}
+
+	&__bottom {
+		margin-top: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: rem(8);
+	}
+
+	&__author {
+		@include caption-1;
+	}
+
+	&__date {
+		color: $color-text-secondary;
+
+		@include caption-1;
+	}
+
+	&__action {
+		min-width: rem(40);
+		width: rem(40);
+		height: rem(40);
+
+		&-btn.button {
+			min-width: 100%;
+			height: 100%;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}

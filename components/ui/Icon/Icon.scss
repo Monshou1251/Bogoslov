@@ -1,0 +1,14 @@
+.icon {
+	&--sm {
+		font-size: rem(16);
+	}
+	&--md {
+		font-size: rem(24);
+	}
+	&--lg {
+		font-size: rem(48);
+	}
+	&--xxl {
+		font-size: rem(120);
+	}
+}

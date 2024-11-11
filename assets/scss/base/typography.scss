@@ -1,0 +1,91 @@
+html {
+	font-family: $font-primary;
+	font-weight: 450;
+	font-style: normal;
+}
+
+body {
+	@include text-1;
+}
+
+.h0 {
+	@include h0;
+}
+
+h1, .h1 {
+	@include h1;
+}
+
+h2, .h2 {
+	@include h2;
+}
+
+h3, .h3 {
+	@include h3;
+}
+
+h4, .h4 {
+	@include h4;
+}
+
+.h4-secondary {
+	@include h4-secondary;
+}
+
+.h4-tertiary {
+	@include h4-tertiary;
+}
+
+h5, .h5 {
+	@include h5;
+}
+
+h6, .h6 {
+	@include h5;
+}
+
+.hx-0 {
+	@include hx-0;
+}
+
+.hx-0-secondary {
+	@include hx-0-secondary;
+}
+
+.hx-1 {
+	@include hx-1;
+}
+
+.hx-2 {
+	@include hx-2;
+}
+
+
+.text-initial {
+	@include text-initial;
+}
+
+.text-lead {
+	@include text-lead;
+}
+
+.text-1 {
+	@include text-1;
+}
+
+.text-2 {
+	@include text-2;
+}
+
+
+.caption-0 {
+	@include caption-0;
+}
+
+.caption-1 {
+	@include caption-1;
+}
+
+.caption-2 {
+	@include caption-2;
+}

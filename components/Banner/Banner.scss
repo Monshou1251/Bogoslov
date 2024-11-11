@@ -1,0 +1,152 @@
+.banner {
+	$root: &;
+
+	height: fit-content;
+	display: flex;
+	flex-wrap: wrap;
+	height: 100%;
+	background-color: $color-bg-level-3;
+	padding: rem(40) 0;
+
+	&__left {
+		width: 50%;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 0 rem(32) 0 rem(36);
+	}
+
+	&__center {
+		width: rem(396);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex-grow: 1;
+	}
+
+	&__title {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		gap: rem(8);
+	}
+
+	&__cursive {
+		font-style: italic;
+		@include text-1()
+	}
+
+	&__subtitle {
+		@include h4-tertiary()
+	}
+
+	&__number {
+		padding: rem(32) 0;
+		@include text-initial()
+	}
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__textbody {
+		text-align: center;
+		padding: rem(32) 0;
+		border-top: 1px solid $color-gray-16;
+
+		@include text-1()
+	}
+
+	&__footer {
+		display: flex;
+		margin-top: auto;
+		gap: rem(8);
+	}
+
+	&__right {
+		width: 50%;
+		padding-left: rem(36);
+	}
+
+	&__img {
+		height: rem(764);
+		width: auto;
+		object-fit: cover;
+	}
+
+	@include media-breakpoint-down(md) {
+		flex-direction: column;
+		gap: rem(48);
+		padding: rem(64) 0;
+
+		&__left, &__right {
+			width: 100%;
+			padding-left: 0;
+		}
+
+		&__right {
+			display: flex;
+			justify-content: center;
+		}
+
+		&__img {
+			height: auto;
+			width: rem(470);
+		}
+
+		&__left {
+			order: 2;
+			padding: 0;
+		}
+
+		&__text {
+			padding-bottom: rem(48);
+		}
+
+		&__center {
+			width: rem(470);
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		flex-direction: column;
+		width: 100%;
+		padding: rem(48) rem(16);
+
+		&__img {
+			height: rem(522);
+			width: auto;
+		}
+
+		&__footer {
+			display: flex;
+			justify-content: center;
+			flex: 1 1 50%;
+			flex-wrap: wrap;
+			gap: rem(4);
+		}
+
+		&__text {
+			padding-bottom: rem(40);
+		}
+
+		&__textbody {
+			padding-bottom: rem(24);
+		}
+
+		&__center {
+			width: 100%;
+		}
+
+		&__number {
+			padding-top: rem(24);
+		}
+
+
+	}
+}

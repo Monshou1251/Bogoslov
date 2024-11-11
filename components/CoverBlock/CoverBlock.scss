@@ -1,0 +1,229 @@
+.cover-block {
+  $cb: &;
+  margin-top: rem(-255);
+  padding-bottom: rem(32);
+  overflow-x: hidden;
+  height: 100dvh + 1;
+  min-height: 600px;
+  background: center / cover no-repeat url("/images/main-page-plug.png");
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  color: $color-white;
+
+  @include media-breakpoint-down(md) {
+    margin-top: rem(-255);
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin-top: rem(-223);
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: white;
+    z-index: 10;
+  }
+
+  &__header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  &__logo {
+    font-size: 11rem;
+    // line-height: 11rem;
+    width: 100%;
+    text-align: center;
+    color: transparent;
+    background: linear-gradient(to right, #4b4b4d 50%, #d3d3d3 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-size: 200%;
+    overflow: hidden;
+    z-index: 100;
+    position: absolute;
+    bottom: 0;
+    // display: none; //<----------------
+
+    @include media-breakpoint-down(md) {
+      font-size: 5.5rem;
+      // line-height: 8rem;
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: rem(42);
+      // line-height: 8rem;
+    }
+  }
+
+  &__articles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+    height: rem(392);
+    width: 100%;
+    overflow: hidden;
+    padding: rem(32);
+    padding-bottom: 0;
+    @include text-2();
+
+    @include media-breakpoint-down(md) {
+      padding: rem(24);
+      padding-bottom: 0;
+    }
+
+    @include media-breakpoint-down(sm) {
+      padding: rem(16);
+      padding-bottom: 0;
+    }
+
+    
+
+    &-one {
+      height: 90%;
+      max-width: 60%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // gap: rem(24);
+
+      &-paging {
+        display: none;
+      }
+
+      @include media-breakpoint-down(md) {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        padding-bottom: 0;
+        gap: rem(24);
+
+        &-paging {
+          display: block;
+        }
+      }
+
+      &-type {
+        @include caption-0;
+        display: flex;
+        align-items: center;
+        gap: rem(4);
+        padding-bottom: rem(16);
+
+        &-icon {
+          display: flex;
+          
+          svg {
+            width: rem(24);
+            height: rem(24);
+          }
+        }
+
+        @include media-breakpoint-down(sm) {
+          
+
+          @include caption-2;
+
+          &-icon {
+            
+            svg {
+              width: rem(16);
+              height: rem(16);
+            }
+          }
+
+        }
+      }
+
+      &-text {
+        @include h1;
+       
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include media-breakpoint-down(sm) {
+          // width: 100%;
+          // width: 100px;
+        }
+      }
+
+      &-text:hover {
+        transition: 0.3s;
+        color: $color-gray-40;
+        cursor: pointer;
+      }
+
+      &-button {
+        color: $color-primary;
+      }
+
+      &-button-container {
+        bottom: 0;
+
+        @include media-breakpoint-down(md) {
+          display: none;
+        }
+      }
+    }
+
+    &-two {
+      height: rem(328);
+      width: rem(348);
+      font-family: $font-secondary;
+
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+
+      &-header {
+        display: flex;
+        align-items: flex-end;
+        height: rem(80);
+        text-transform: uppercase;
+        border-bottom: 1px solid $color-white;
+        padding-bottom: rem(12);
+        margin-bottom: rem(12);
+
+        @include text-1();
+        letter-spacing: 0.9px;
+      }
+
+      &-list {
+        padding: rem(12) 0;
+        border-bottom: 1px solid $color-border-strong;
+        @include caption-2();
+      }
+
+      &-list:hover {
+        transition: 0.3s;
+        color: $color-gray-40;
+        cursor: pointer;
+      }
+
+      &-list:last-child {
+        border-bottom: none;
+        padding: rem(12) 0;
+      }
+    }
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+

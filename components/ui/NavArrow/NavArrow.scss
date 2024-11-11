@@ -1,0 +1,30 @@
+.nav-arrow {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	width: max-content;
+
+	&__btn {
+		.nav-arrow--gallery & {
+			@include media-breakpoint-down(sm) {
+				width: rem(32);
+				height: rem(32);
+				font-size: rem(16);
+			}
+		}
+	}
+
+	&__text {
+		.nav-arrow--pagination & {
+			@include number-stable;
+		}
+
+		.nav-arrow--gallery & {
+			@include number-1;
+		}
+	}
+
+	&__total {
+		color: $color-text-secondary;
+	}
+}

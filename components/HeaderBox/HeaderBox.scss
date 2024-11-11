@@ -1,0 +1,103 @@
+.header-box {
+  //   padding: 0 rem(32);
+  position: relative;
+
+  &__top {
+    height: rem(256);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: rem(4);
+    position: absolute;
+    top: rem(16);
+    left: rem(32);
+    color: $color-secondary;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $color-primary;
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    @include h0;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__filter {
+    height: rem(60);
+    background-color: $color-bg-level-3;
+    display: flex;
+    align-items: center;
+    padding: 0 rem(24);
+    border-radius: rem(60);
+
+    @include caption-1;
+
+    &-left {
+      margin-right: auto;
+      display: flex;
+      gap: rem(4);
+      transition: color 0.3s ease;
+      font-family: $font-secondary;
+
+      &:hover {
+        color: $color-accent;
+        cursor: pointer;
+      }
+    }
+
+    &-button {
+      display: flex;
+      align-items: center;
+      gap: rem(4);
+      transition: color 0.3s ease;
+    }
+
+    &-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: rem(24);
+
+      &-item {
+        position: relative;
+        cursor: pointer;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: rem(-18);
+          left: 0;
+          height: rem(2);
+          background-color: $color-primary;
+          width: 100%;
+          transform: scaleX(0); 
+          transform-origin: center; 
+          transition: transform 0.2s ease;
+        }
+
+        &.active::after {
+          transform: scaleX(1); 
+        }
+      }
+    }
+
+    &-text {
+      text-align: center;
+      line-height: 2;
+    }
+  }
+}

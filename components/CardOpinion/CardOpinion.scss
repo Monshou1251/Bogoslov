@@ -1,0 +1,107 @@
+.card-opinion {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__subject {
+		display: flex;
+		gap: rem(25);
+		margin-bottom: rem(16);
+		color: $color-text-interactive;
+
+		@include caption-2;
+
+		@include media-breakpoint-down(sm) {
+			margin-bottom: rem(12);
+		}
+
+		span:first-child {
+			position: relative;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				right: rem(-15);
+				width: rem(5);
+				height: rem(5);
+				background-color: $color-text-interactive;
+				border-radius: 50%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+
+	&__title {
+		margin-top: rem(16);
+		text-align: center;
+
+		@include h3;
+	}
+
+	&__divider {
+		flex: 1;
+		width: 1px;
+		margin-top: rem(16);
+		margin-bottom: rem(16);
+		background-color: $color-bg-level-2;
+	}
+
+	&__cover {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&-img {
+			display: block;
+			object-fit: cover;
+			width: rem(96);
+			border-radius: 50%;
+			height: rem(96);
+		}
+	}
+
+	&__bottom {
+		margin-top: rem(16);
+		text-align: center;
+	}
+
+	&__author {
+		@include caption-1;
+	}
+
+	&__date {
+		color: $color-text-secondary;
+
+		@include caption-1;
+	}
+
+	&__action {
+		position: absolute;
+		right: rem(24);
+		bottom: rem(24);
+		min-width: rem(40);
+		width: rem(40);
+		height: rem(40);
+
+		@include media-breakpoint-down(md) {
+			right: rem(16);
+			bottom: rem(16);
+		}
+
+		@include media-breakpoint-down(sm) {
+			right: 0;
+			bottom: rem(16);
+		}
+
+		&-btn.button {
+			min-width: rem(40);
+			height: rem(40);
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}

@@ -1,0 +1,153 @@
+.banner-course {
+	$root: &;
+
+	display: flex;
+	flex-wrap: wrap;
+    flex-direction: column;
+	height: rem(544);
+	background-color: $color-bg-level-3;
+	padding: rem(40) rem(164);
+
+    &__header {
+        width: rem(611);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(8);
+    }
+
+    &__center {
+        width: rem(611);
+    }
+
+    &__icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+        height: rem(44);
+        width: rem(40);
+    }
+
+	&__title {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		gap: rem(8);
+
+		&-header {
+			@include h4-tertiary()
+		}
+	}
+
+	&__slogan {
+		padding: rem(32) 0;
+        text-align: center;
+		@include h1()
+	}
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		&-body {
+			text-align: center;
+			padding: rem(32) 0 0 0;
+			border-top: 1px solid $color-gray-16;
+            text-wrap: balance;
+
+			@include text-1()
+		}
+	}
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin-top: rem(8);
+        width: 100%;
+        height: rem(68);
+    }
+
+
+	&__right {
+		width: 50%;
+        height: 100%;
+		padding-left: rem(156);
+        display: flex;
+        align-items: center;
+        position: relative;
+	}
+
+	&__img {
+		height: rem(464);
+		width: rem(348);
+		object-fit: cover;
+		object-position: top right;
+	}
+
+	@include media-breakpoint-down(md) {
+		flex-direction: column;
+		align-items: center;
+		height: auto;
+		padding: rem(64) rem(24);
+
+		&__header {
+            width: 100%;
+            order: 1;
+        }
+
+		&__center {
+			width: 100%;
+			padding: 0 rem(54.5);
+            order: 3;
+		}
+
+        &__slogan {
+            padding-top: 0;
+        }
+
+
+		&__right {
+			width: 100%;
+            order: 2;
+			padding-left: 0;
+			margin: rem(48) 0;
+			display: flex;
+			justify-content: center;
+		}
+
+		&__img {
+			width: rem(348);
+			height: rem(464);
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+        padding: rem(56) rem(16);
+
+        &__center {
+			width: 100%;
+			padding: 0;
+            order: 3;
+		}
+
+        &__text-body {
+            padding-top: rem(24);
+        }
+
+        &__slogan {
+            padding-bottom: rem(24);
+        }
+
+        &__right {
+            height: rem(438);
+        }
+
+        &__img {
+			width: 100%;
+			height: rem(464);
+		}
+	}
+}

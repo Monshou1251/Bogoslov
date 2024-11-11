@@ -1,0 +1,138 @@
+.sticky-header {
+  $root: &;
+  position: static;
+  z-index: 10;
+
+  transition: .4s ease;
+
+  &.white{
+    background-color: $color-white;
+
+    .button-menu:not(:hover){
+      :deep(.button-menu__text),
+      :deep(.button-menu__icon){
+        color: $color-primary;
+      }
+    }
+
+    #{$root}__wrap::after{
+      height: 2px;
+      background-color: $color-primary;
+    }
+  }
+
+  &.dark{
+    #{$root}__nav-item{
+      color: $color-primary;
+    }
+
+    #{$root}__wrap::after{
+      background-color: $color-primary;
+    }
+
+    .button-menu:not(hover){
+
+      :deep(.button-menu__text),
+      :deep(.button-menu__icon) {
+        color: $color-primary;
+      }
+
+      :deep(.button-menu__icon-wrap) {
+        border-color: $color-primary;
+      }
+
+    }
+  }
+
+  // Scroll mech
+  &.scroll-active{
+    position: sticky;
+    top: rem(-100);
+  }
+
+  &.sticky-visible{
+    top: 0;
+  }
+
+  &__wrap{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &::after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      margin: 0 rem(32);
+      width: calc(100% - rem(64));
+      height: 1px;
+
+      background-color: rgba($color-white, 0.2);
+      transition: .3s;
+      will-change: transform;
+      transform: translateZ(0);
+
+      @include media-breakpoint-down(md){
+        margin: 0 rem(24);
+        width: calc(100% - rem(48));
+      }
+
+      @include media-breakpoint-down(sm){
+        margin: 0 rem(16);
+        width: calc(100% - rem(32));
+      }
+    }
+  }
+
+  &__btn{
+    &-wrap{
+      width: rem(200);
+
+      &:last-child{
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    @include media-breakpoint-down(sm){
+      :deep(.button-menu__text){
+        display: none;
+      }
+    }
+  }
+
+  &__nav{
+    display: flex;
+    gap: rem(32);
+
+    @include media-breakpoint-down(md){
+        display: none;
+    }
+
+    &-item{
+      color: $color-white;
+      @include caption-menu;
+
+      transition: .3s;
+
+      &:hover{
+        color: $color-gray-40;
+      }
+
+      &.active{
+        color: $color-gray-40;
+      }
+    }
+  }
+
+  &__select{
+    display: none;
+
+    @include media-breakpoint-down(md){
+      display: block;
+    }
+  }
+}

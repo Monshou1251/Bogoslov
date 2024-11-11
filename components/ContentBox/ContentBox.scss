@@ -1,0 +1,39 @@
+.content-box {
+	display: flex;
+	flex-direction: column;
+
+	&__header {
+		border-bottom: 1px solid $color-border-base;
+	}
+
+	&__title {
+		padding-top: rem(12);
+		padding-bottom: rem(40);
+
+		text-align: center;
+		@include h4-tertiary();
+
+		@include media-breakpoint-up(md) {
+			padding-bottom: rem(48);
+		}
+	}
+
+	&__bottom {
+		margin: rem(16) auto 0 auto;
+		min-height: rem(68);
+
+		@include media-breakpoint-up(md) {
+			margin-top: rem(20);
+		}
+	}
+
+	&__no-border-sm {
+		@include media-breakpoint-down(sm) {
+			border-bottom: none;
+
+			.content-box__header {
+				border-bottom: none;
+			}
+		}
+	}
+}

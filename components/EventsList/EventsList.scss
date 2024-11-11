@@ -1,0 +1,249 @@
+.events-list{
+  $root: &;
+
+  &__inner{
+    display: flex;
+    flex-direction: column;
+
+    @include media-breakpoint-up(lg){
+      flex-direction: row;
+      align-items: flex-start;
+      gap: rem(48);
+    }
+  }
+
+  &__date{
+    padding: rem(16) 0 rem(24) 0;
+    position: sticky;
+    z-index: 5;
+    top: 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    grid-template-rows: rem(16) auto;
+    grid-column-gap: rem(4);
+    grid-row-gap: rem(0);
+
+    border-bottom: 1px solid $color-border-base;
+    background-color: $color-white;
+
+    transition: .3s;
+
+    &.hidden{
+      opacity: 0;
+
+      @include media-breakpoint-up(lg){
+        opacity: 1;
+      }
+    }
+
+    @include media-breakpoint-up(md){
+      padding: rem(20) 0 rem(32) 0;
+    }
+
+    @include media-breakpoint-up(lg){
+      width: calc(8.333% - rem(11));
+
+      display: flex;
+      flex-direction: column;
+      border-bottom: none;
+    }
+  }
+
+  &__day{
+    grid-area: 1 / 1 / 3 / 2;
+    @include h0();
+  }
+
+  &__month{
+    grid-area: 1 / 2 / 2 / 3;
+    @include caption-2();
+  }
+
+  &__weekday{
+    grid-area: 2 / 2 / 3 / 3;
+    @include caption-2();
+    color: $color-text-secondary;
+  }
+
+  &__item{
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-border-base;
+    }
+
+    @include media-breakpoint-up(md){
+      &:last-child{
+        border-bottom: 1px solid $color-border-base;
+      }
+    }
+  }
+}
+
+.event{
+  $evt: &;
+  padding: rem(16) rem(0);
+
+  cursor: pointer;
+
+  &:hover{
+    #{$evt}__title, #{$evt}__subtitle{
+      color: $color-accent;
+    }
+  }
+
+  @include media-breakpoint-up(md){
+    padding: rem(20) rem(0);
+  }
+
+  @include media-breakpoint-up(md){
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: rem(32);
+  }
+
+  @include media-breakpoint-up(lg){
+    gap: rem(48);
+    flex-wrap: nowrap;
+  }
+
+  &__time{
+    margin-bottom: rem(16);
+    @include h3();
+
+    @include media-breakpoint-up(md){
+      width: 13%;
+    }
+
+    @include media-breakpoint-up(lg){
+      width: 6%;
+      // min-width: rem(84);
+    }
+  }
+
+  &__img{
+    width: rem(80);
+    height: rem(80);
+    border-radius: 100%;
+    object-fit: cover;
+
+    @include media-breakpoint-up(lg){
+      width: rem(120);
+      height: rem(120);
+    }
+  }
+
+  &__description{
+    @include media-breakpoint-up(md){
+      width: calc(87% - rem(144));
+    }
+
+    @include media-breakpoint-up(lg){
+      width: 41%
+    }
+  }
+
+  &-tag{
+    margin-top: rem(16);
+    margin-bottom: rem(8);
+
+    display: flex;
+    align-items: center;
+
+    @include caption-2();
+    color: $color-text-secondary;
+
+    @include media-breakpoint-up(md){
+      margin-top: 0;
+      margin-bottom: rem(12);
+    }
+
+    span {
+      position: relative;
+      display: inline-block;
+      margin-left: rem(4);
+      padding-right: rem(20);
+
+      &::after{
+        content: "";
+        position: absolute;
+
+        top: 50%;
+        right: rem(8);
+        transform: translateY(-50%);
+
+        width: rem(5);
+        height: rem(5);
+        border-radius: 100%;
+        background-color: $color-icon-light;
+      }
+    }
+  }
+
+  &__title, &__subtitle{
+    @include h3();
+    transition: .3s;
+  }
+
+  &__subtitle{
+    font-style: italic;
+  }
+
+  &__org{
+    margin-top: rem(24);
+    display: flex;
+    gap: rem(8);
+    align-items: flex-end;
+    justify-content: space-between;
+
+    @include media-breakpoint-up(md){
+      margin-top: 0;
+      margin-left: auto;
+      width: calc(87% - rem(144));
+    }
+
+    @include media-breakpoint-up(lg){
+      margin-left: 0;
+
+      flex: 1;
+      align-items: flex-start;
+      gap: rem(48);
+
+      width: auto;
+    }
+
+    &-caption, &-label{
+      @include caption-1();
+      color: $color-text-secondary;
+
+      @include media-breakpoint-up(lg){
+        @include caption-2();
+      }
+    }
+
+    &-label{
+      color: $color-text-primary;
+    }
+
+    &-caption{
+      @include media-breakpoint-up(lg){
+        margin-bottom: rem(12);
+      }
+    }
+  }
+
+  &__btn-fav.button{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: rem(40);
+    width: rem(40);
+    height: rem(40);
+
+    &.active{
+      color: $color-icon-accent;
+    }
+  }
+}

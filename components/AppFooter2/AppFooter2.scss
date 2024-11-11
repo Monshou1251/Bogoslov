@@ -1,0 +1,299 @@
+.app-footer2 {
+    height: rem(400);
+    width: 100%;
+	background-color: $color-bg-level-2;
+	color: $color-white;
+	font-family: $font-secondary;
+    position: relative;
+    padding: rem(32);
+    
+    @include caption-2;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: rem(-32);
+        left: 0;
+        height: rem(32);
+        width: 100%;
+    }
+
+    &::after {
+        background-color: $color-bg-level-1;
+        border-end-start-radius: rem(32);
+		border-end-end-radius: rem(32);
+    }
+
+    &::before {
+        background-color: inherit;
+    }
+
+    @include media-breakpoint-down(md) {
+		padding: rem(32) rem(24);
+		height: unset;
+
+		&::before,
+		&::after {
+			top: rem(-24);
+			height: rem(24);
+		}
+
+		&::after {
+			border-end-start-radius: rem(24);
+			border-end-end-radius: rem(24);
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		padding: rem(24) rem(16);
+
+		&::before,
+		&::after {
+			top: rem(-16);
+			height: rem(16);
+		}
+
+		&::after {
+			border-end-start-radius: rem(16);
+			border-end-end-radius: rem(16);
+		}
+	}
+
+    &__container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: rem(36); 
+    }
+
+    &__link {
+        color: inherit;
+    }
+
+    &__top {
+        height: rem(100);
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__logo {
+        flex: 0 0 50%;
+    }
+
+
+    &__journal-links {
+        flex: 0 0 calc(2/3 * 50%);
+    }
+
+    &__social-links {
+        flex: 0 0 calc(1/3 * 50%);
+    }
+
+    &__bottom {
+        box-sizing: border-box;
+        padding-top: rem(24);
+        color: $color-text-secondary;
+        // height: rem(200);
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        border-top: 1px solid $color-white-12;
+    }
+
+    &__info {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__bottom-footer {
+        display: flex;
+
+        &-year {
+            flex: 0 0 50%; 
+        }
+
+        &-lang {
+            // flex: 0 0 auto;
+        }
+
+        &-co {
+            // flex: 0 0 auto; 
+            margin-left: auto;
+        }
+    }
+
+    .logo {
+        flex: 1 1 50%;
+    }
+
+    .item {
+
+        &__label {
+            margin-bottom: rem(8);
+			text-transform: uppercase;
+			color: $color-text-secondary;
+			font-family: $font-secondary;
+
+			@include hx-2;
+        }
+
+        &__link {
+			color: inherit;
+			transition: 0.3s ease;
+
+			@include caption-2;
+
+			&:hover {
+				color: $color-text-secondary;
+			}
+		}
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: calc(4 * rem(20));
+            gap: rem(4);
+        }
+
+      
+    }
+    
+
+    &__contacts {
+        flex: 0 0 calc(1/3 * 50%);
+    }
+
+    &__roskom,
+    &__founder {
+        flex: 0 0 25%;
+    }
+
+    &__address {
+        flex: 0 0 calc(2/3 * 50%);
+    }
+
+    @include media-breakpoint-down(md) {
+        &__container {
+            gap: rem(32); 
+        }
+
+        &__top {
+            height: rem(180);
+        }
+    
+        &__logo {
+            min-width: 100%;
+            margin-bottom: rem(40);
+        }
+    
+        &__journal-links {
+            flex: 0 0 50%;
+        }
+    
+        &__social-links {
+            flex: 0 0 50%;
+        }
+
+        &__contacts {
+            flex: 0 0 50%;
+            order: 4;
+        }
+
+        &__bottom {
+            height: rem(280);
+        }
+    
+        &__roskom{
+            flex: 0 0 50%;
+            order: 3;
+        }
+
+        &__founder {
+            flex: 0 0 50%;
+            order: 1;
+            margin-bottom: rem(32);
+        }        
+    
+        &__address {
+            flex: 0 0 50%;
+            order: 2;
+        }
+	}
+
+    @include media-breakpoint-down(sm) {
+        &__container {
+            gap: rem(32); 
+        }
+
+        &__top {
+            height: rem(276);
+        }
+    
+        &__logo {
+            min-width: 100%;
+            margin-bottom: rem(40);
+            height: fit-content;
+        }
+
+        .item {
+            &__list {
+                height: auto;
+                gap: rem(8);
+            }
+        }
+    
+        &__journal-links {
+            flex: 0 0 50%;
+        }
+    
+        &__social-links {
+            flex: 0 0 50%;
+        }
+        
+        &__bottom {
+            height: rem(464);
+        }
+    
+        &__roskom {
+            flex: 0 0 50%;
+            order: 3;
+        }
+
+        &__contacts,
+        &__address,
+        &__roskom,
+        &__founder {
+            flex: 0 0 100%;
+            order: 1;
+            margin-bottom: rem(24);
+        }    
+        
+        &__bottom-footer {
+            flex-wrap: wrap;
+            
+            &-year {
+                order: 2;
+                flex: 0 0 50%;
+            }
+    
+            &-lang {
+                order: 1;
+                flex: 0 0 100%;
+                margin-bottom: rem(8);
+            }
+    
+            &-co {
+                order: 3;
+                flex: 0 0 50%;
+                margin: 0;
+                text-align: right;
+            }
+        }
+    
+	}
+
+}

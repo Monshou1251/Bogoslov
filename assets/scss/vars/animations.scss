@@ -1,0 +1,76 @@
+$timing: 0.3s !default;
+$easing: ease !default;
+
+@keyframes loading {
+  0% {
+    background-position: 100%
+  }
+
+  40%, 100% {
+    background-position: -100%
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lineScaleX {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Анимация fade */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+
+.slide-enter-active, .slide-leave-active {
+  transition: transform 0.5s ease;
+}
+
+/* Появление справа налево (десктоп) */
+.slide-enter-from {
+  transform: translateX(100%);
+}
+.slide-enter-to {
+  transform: translateX(0);
+}
+.slide-leave-from {
+  transform: translateX(0);
+}
+.slide-leave-to {
+  transform: translateX(100%);
+}
+
+/* Анимация для мобильных устройств (сверху вниз) */
+@media (max-width: 640px) {
+  .slide-enter-from {
+    transform: translateY(-100%);
+  }
+  .slide-enter-to {
+    transform: translateY(0);
+  }
+  .slide-leave-from {
+    transform: translateY(0);
+  }
+  .slide-leave-to {
+    transform: translateY(-100%);
+  }
+}

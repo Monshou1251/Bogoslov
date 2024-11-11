@@ -1,0 +1,27 @@
+@mixin scrollbar-custom {
+	/* FIREFOX */
+	@-moz-document url-prefix() {
+			scrollbar-width: thin;
+			scrollbar-color: rgba(#000, 0.2) #F5F5F5;
+	}
+
+	&::-webkit-scrollbar {
+		width: 4px;
+		height: 4px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: #F5F5F5;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: rgba(#000, 0.2);
+		border-radius: 30px;
+
+		transition: .3s;
+
+		&:hover{
+			background: rgba(#000, 0.4);
+		}
+	}
+}

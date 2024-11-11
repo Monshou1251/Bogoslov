@@ -1,0 +1,16 @@
+.paging-slider {
+    display: flex;
+    align-items: center;
+    gap: rem(16);
+    
+
+    &__numbers {
+        font-style: italic;
+
+        @include number-stable;
+    }
+
+    &__total {
+        color: $color-secondary;
+    }
+}
