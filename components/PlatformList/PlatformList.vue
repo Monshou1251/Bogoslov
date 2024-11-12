@@ -5,7 +5,7 @@
             :key="item.uuid"
             class="platform-list__item"
         >
-            <CardPlatform :data="item" />
+            <CardPlatform :data="item" @toggleBookmarkPlatform="onBookmarkPlatform"/>
         </div>
     </div>
 </template>
@@ -23,6 +23,11 @@ export default {
             default: () => [],
         },
     },
+    methods: {
+        async onBookmarkPlatform({id, hasBookmark}) {
+            this.$emit("toggleBookmarkPlatform", {id, hasBookmark})
+        }
+    }
 };
 </script>
 

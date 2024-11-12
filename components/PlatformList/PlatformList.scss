@@ -4,6 +4,8 @@
 	margin: 0 rem(-24);
 
 	@include media-breakpoint-down(md) {
+
+		
 		margin: 0 rem(-16);
 	}
 
@@ -93,10 +95,12 @@
 			&:nth-child(odd) {
 				&::before {
 					left: rem(16);
+					background-color: #fff;
 				}
 			}
 
 			&:nth-child(even) {
+				display: none;
 				&::before {
 					right: rem(16);
 				}
@@ -126,6 +130,17 @@
 					display: none;
 				}
 			}
+
+			&:nth-child(even) {
+				display: initial;
+				&::before {
+					right: rem(16);
+				}
+				&::after {
+					display: none;
+				}
+			}
+
 
 			&:last-child {
 				border-bottom: none;

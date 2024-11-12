@@ -51,6 +51,7 @@ import ButtonMenu from './ButtonMenu/ButtonMenu.vue'
 import Icon from '../ui/Icon/Icon.vue'
 import { isMob, isTablet } from "@/assets/js/utils/breakpoints"
 import { gsap } from 'gsap'
+import { useAnimationStore } from './store/animation';
 
 export default {
     name: 'AppHeader',
@@ -70,7 +71,7 @@ export default {
 
     data: () => ({
         mdAndDown: false,
-
+        animationStore: useAnimationStore(),
         lang: {
             key: 'en',
             label: 'English',
@@ -151,9 +152,8 @@ export default {
             scale = 1.20;
         }
 
-        const animationPlayed = sessionStorage.getItem('homeAnimationPlayed');
 
-        if (this.animateLogo && !animationPlayed) {
+        if (this.animateLogo && !this.animationStore.hasAnimated) {
             const logoText = this.$refs.logoText;
 
             const timeline = gsap.timeline();
@@ -187,7 +187,7 @@ export default {
                 },
                 "-=1.5"
             );
-            sessionStorage.setItem('homeAnimationPlayed', 'true')
+            this.animationStore.markAsAnimated();
         }
 
     },

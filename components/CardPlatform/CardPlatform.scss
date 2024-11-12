@@ -66,8 +66,13 @@
 		gap: rem(8);
 	}
 
+	&__info {
+		max-width: rem(432)
+	}
+
 	&__location {
 		@include caption-1;
+		
 	}
 
 	&__city {
@@ -88,6 +93,10 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+
+			&.active{
+				color: $color-icon-accent;
+			  }
 		}
 	}
 }

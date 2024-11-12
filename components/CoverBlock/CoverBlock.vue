@@ -48,10 +48,10 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch, nextTick, computed } from 'vue';
 import { gsap } from 'gsap';
-import { CustomEase } from 'gsap/CustomEase';
 import Icon from '../ui/Icon/Icon.vue'
 import ButtonUi from "../ui/ButtonUi/ButtonUi.vue";
 import PagingSlider from './components/ui/PagingSlider/PagingSlider.vue';
+import { useAnimationStore } from './store/animation';
 
 
 const props = defineProps({
@@ -118,17 +118,17 @@ function startTypingAnimation() {
   );
 }
 
+let hasTriggered = false;
+
 function coverAnimation() {
 
   gsap.fromTo(".cover-block__overlay",
     {
       height: "100%",
-      delay: 4.5,
-      duration: 2,
     },
     {
       height: "0%",
-      delay: 4.5,
+      delay: 4,
       duration: 2,
       ease: "power2.out",
       onComplete: enableScrolling,
@@ -150,21 +150,16 @@ watch(currentIndex, () => {
   startTypingAnimation();
 });
 
+const animationStore = useAnimationStore();
+console.log("animationStore", animationStore)
 
-onMounted(async () => {
+onMounted(() => {
   
-  await nextTick();
   startRotation()
   startTypingAnimation();
 
-  window.addEventListener('beforeunload', () => {
-      localStorage.removeItem('homeAnimationPlayed');
-    });
-
-  const animationPlayed = sessionStorage.getItem('homeAnimationPlayed');
-
-  if (!animationPlayed) {
-    
+  if (!animationStore.hasAnimated) {
+    console.log('ekekke')
     disableScrolling()
     coverAnimation()
     gsap.fromTo(
@@ -190,15 +185,12 @@ onMounted(async () => {
       }
     );
 
-    // localStorage.setItem('homeAnimationPlayed', 'true')
-    sessionStorage.setItem('homeAnimationPlayed', 'true')
   }
 
 });
 
 onBeforeUnmount(() => {
   clearInterval(rotationInterval);
-  // localStorage.removeItem('homeAnimationPlayed');
 });
 
 

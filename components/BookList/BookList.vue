@@ -1,7 +1,7 @@
 <template>
     <div class="book-list">
         <div v-for="book in books" :key="book.uuid" class="book-list__item">
-            <CardBook :data="book"></CardBook>
+            <CardBook :data="book" @toggleBookmarkBook="onBookmarkBook"></CardBook>
         </div>
     </div>
 </template>
@@ -19,6 +19,11 @@ export default {
             default: () => {},
         },
     },
+    methods: {
+        async onBookmarkBook({ id, hasBookmark }) {
+            this.$emit("toggleBookmarkBook", {id, hasBookmark})
+        },
+    }
 };
 </script>
 

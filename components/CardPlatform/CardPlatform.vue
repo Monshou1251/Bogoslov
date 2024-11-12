@@ -21,8 +21,8 @@
 
             <div class="card-platform__bottom">
                 <div class="card-platform__info">
-                    <p class="card-platform__location">{{ data.location }}</p>
-                    <p class="card-platform__city">{{ data.city }}</p>
+                    <p class="card-platform__location">{{ data.location ?? "Default location" }}</p>
+                    <p class="card-platform__city">{{ data.city ?? "Default location" }}</p>
                 </div>
 
                 <div class="card-platform__action">
@@ -36,7 +36,7 @@
                             data.hasBookmark ? 'favorites-active' : 'favorites'
                         "
                         @click="
-                            $emit('toggleBookmark', {
+                            $emit('toggleBookmarkPlatform', {
                                 id: data.uuid,
                                 hasBookmark: data.hasBookmark,
                             })

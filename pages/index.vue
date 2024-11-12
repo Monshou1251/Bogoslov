@@ -8,8 +8,8 @@
             </div>
         </ContentBox>
 
-        <ContentBox class="pb-96 pb-md-56" title="Материалы" :link="materials.link">
-            <MaterialList :materials="materials.items" />
+        <ContentBox class="pb-96 pb-md-56" title="Материалы" :link="{ text: 'Все материалы', url: '/materials' }">
+            <MaterialList :materials="materials.items" @toggleBookmarkMaterial="onBookmarkToggleMaterial" />
         </ContentBox>
 
         <Banner :data="journalData" />
@@ -19,18 +19,22 @@
             <EventsList :data="events" @toggleBookmark="onBookmarkToggle" />
         </ContentBox>
 
-        <CardTools :cards="cards"/>
+        <CardTools :cards="cards" />
 
-        <ContentBox class="pb-96 pb-md-56 pt-md-40" title="Книги" :link="books.link">
-            <BookList :books="books.items" />
+        <ContentBox class="pb-96 pb-md-56 pt-md-40 pb-56 pt-56" title="Книги" :link="books.link">
+            <BookList :books="books.items" @toggleBookmarkBook="onBookmarkToggleBook" />
         </ContentBox>
 
         <BannerCourse :data="courseData" />
 
-        <ContentBox class="pt-56 pt-md-40 pt-lg-40 pb-56 pb-md-40 pb-lg-40 content-box__no-border-sm" title="Партнеры"
+        <ContentBox class="pb-96 pb-md-56 pt-md-40" title="Онлайн-площадка" :link="{ text: 'Все события', url: '/platfroms' }">
+            <PlatformList :platforms="platforms.items" @toggleBookmarkPlatform="onBookmarkTogglePlatform" />
+        </ContentBox>
+
+        <ContentBox class="pt-md-40 pt-lg-40 pb-56 pb-md-40 pb-lg-40 content-box__no-border-sm" title="Партнеры"
             :link="{ text: '', url: '/' }" :isIcon="false">
             <div class="">
-                <PartnersBlock :data="partners.items" />
+                <PartnersBlock :data="partners.items"/>
             </div>
         </ContentBox>
 
@@ -49,6 +53,7 @@ import BookList from "~/components/BookList/BookList.vue";
 import Banner from '~/components/Banner/Banner.vue';
 import CardTools from '~/components/CardTools/CardTools.vue';
 import BannerCourse from '~/components/BannerCourse/BannerCourse.vue';
+import PlatformList from '~/components/PlatformList/PlatformList.vue';
 
 export default {
     components: {
@@ -61,7 +66,8 @@ export default {
         BookList,
         Banner,
         BannerCourse,
-        CardTools
+        CardTools,
+        PlatformList
     },
 
     data() {
@@ -103,7 +109,7 @@ export default {
 
                 link: {
                     text: "Все события",
-                    url: "/",
+                    url: "/events",
                 },
 
                 items: [
@@ -381,7 +387,7 @@ export default {
             books: {
                 link: {
                     text: "Все книги",
-                    url: "/",
+                    url: "/books",
                 },
 
                 items: [
@@ -395,7 +401,7 @@ export default {
                         content: "Миссия церкви",
                         subject: "Пасторское богословие",
                         title: "Теология и социальная теория. По ту сторону секулярного порядка",
-                        img: "/images/book-cover.jpg",
+                        img: "/tmp/Books/book-1.svg",
                         author: "Джон Милбанк",
                         translate:
                             "Перевод А. Кырлежева, под редакцией А. Гагинского",
@@ -411,7 +417,7 @@ export default {
                         content: "Миссия церкви",
                         subject: "Пасторское богословие",
                         title: "Метафизика. Современное видение",
-                        img: "/images/book-cover.jpg",
+                        img: "/tmp/Books/book-2.svg",
                         author: "Майкл Дж. Лакс, Томас М. Крисп",
                         translate:
                             "Перевод М. В. Семилеткиной, под научной редакцией С. М. Левина",
@@ -427,7 +433,7 @@ export default {
                         content: "Миссия церкви",
                         subject: "Пасторское богословие",
                         title: "«Образ, икона, экономика. Византийские истоки современного воображаемого»",
-                        img: "/images/book-cover2.jpg",
+                        img: "/tmp/Books/book-3.svg",
                         author: "Майкл Дж. Лакс, Томас М. Крисп",
                         prod: "Главин Н. И., 11.06.2024",
                     },
@@ -441,7 +447,7 @@ export default {
                         content: "Миссия церкви",
                         subject: "Пасторское богословие",
                         title: "Религия в цифровом обществе",
-                        img: "/images/book-cover.jpg",
+                        img: "/tmp/Books/book-4.svg",
                         author: "Под редакцией Алексей Бодров и Михаила Толстопятенко",
                         prod: "Издательство ББИ, 2024",
                     },
@@ -455,7 +461,7 @@ export default {
                         content: "Духовная литература",
                         subject: "Духовное наставление",
                         title: "Избранные духовные наставления, утешения и пророчества",
-                        img: "/images/book-cover.jpg",
+                        img: "/tmp/Books/book-5.svg",
                         author: "Серафим Саровский",
                         translate:
                             "Перевод А. Кырлежева, под редакцией А. Гагинского",
@@ -471,7 +477,7 @@ export default {
                         content: "Беседы",
                         subject: "Духовная литература",
                         title: "О Боге и человеке: в вопросах и ответах",
-                        img: "/images/book-cover.jpg",
+                        img: "/tmp/Books/book-6.svg",
                         author: "Протоиерей Андрей Ткачев",
                         prod: "V–A–C Press, 2022",
                     },
@@ -485,7 +491,7 @@ export default {
                         content: "Вечные вопросы",
                         subject: "Духовные ценности",
                         title: "Апостасия. Отступничество",
-                        img: "/images/book-cover.jpg",
+                        img: "/tmp/Books/book-7.svg",
                         author: "Людмила Разумовская",
                         translate:
                             "Перевод с английского М. В. Семилеткиной, под научной редакцией С. М. Левина",
@@ -501,11 +507,59 @@ export default {
                         content: "Богословие",
                         subject: "Вечные вопросы",
                         title: "Жизнь после смерти согласно Православной Традиции",
-                        img: "/images/book-cover.jpg",
+                        img: "/tmp/Books/book-8.svg",
                         author: "Жан-Клод Ларше",
                         translate:
                             "Под редакцией Алексей Бодров и Михаила Толстопятенко",
                         prod: "Издательство ББИ, 2024",
+                    },
+                ],
+            },
+            platforms: {
+                link: {
+                    text: "Все книги",
+                    url: "/books",
+                },
+
+                items: [
+                    {
+                        uuid: "1",
+                        hasBookmark: false,
+                        title: "Научная конференция «Антиминсы и литургические ткани»",
+                        startDate: "2023-11-20 12:00:00",
+                        endDate: "2023-11-22 00:00:00",
+                        location: "ОЦАД",
+                        city: "Москва",
+                        type: {
+                            name: "Конференция",
+                        },
+                        img: "/tmp/Platforms/platform-1.svg",
+                    },
+                    {
+                        uuid: "2",
+                        hasBookmark: false,
+                        title: "Презентация книги «Священные мелодии коптов»",
+                        startDate: "2023-11-20 12:00:00",
+                        endDate: "2023-11-22 00:00:00",
+                        location: "ОЦАД",
+                        city: "Онлайн",
+                        type: {
+                            name: "Презентация",
+                        },
+                        img: "/tmp/Platforms/platform-2.svg",
+                    },
+                    {
+                        uuid: "3",
+                        hasBookmark: false,
+                        title: "III Международный съезд регентов и певчих",
+                        startDate: "2023-11-20 12:00:00",
+                        endDate: "2023-11-22 00:00:00",
+                        location: "Церковно-общественный совет при Патриархе Московском и всея Руси по развитию русского церковного пения",
+                        city: "Санкт-Петербург",
+                        type: {
+                            name: "Съезд",
+                        },
+                        img: "/tmp/Platforms/platform-3.svg",
                     },
                 ],
             },
@@ -574,8 +628,26 @@ export default {
     methods: {
         async onBookmarkToggle({ id, hasBookmark }) {
             //TODO: save on server
-            console.log('onBookmarkToggle')
             const item = this.events.items.find(item => item.uuid === id);
+            item.hasBookmark = !hasBookmark;
+        },
+
+        async onBookmarkToggleBook({ id, hasBookmark }) {
+            //TODO: save on server
+            console.log('onBookmarkToggleBook')
+            const item = this.books.items.find(item => item.uuid === id);
+            item.hasBookmark = !hasBookmark;
+        },
+
+        async onBookmarkToggleMaterial({ id, hasBookmark }) {
+            //TODO: save on server
+            const item = this.materials.items.find(item => item.uuid === id);
+            item.hasBookmark = !hasBookmark;
+        },
+
+        async onBookmarkTogglePlatform({ id, hasBookmark }) {
+            //TODO: save on server
+            const item = this.platforms.items.find(item => item.uuid === id);
             item.hasBookmark = !hasBookmark;
         },
 
@@ -594,23 +666,4 @@ export default {
 </script>
 
 <style lang="scss">
-//TODO: Temp. Move styles to CoverBlock in relevant task
-// .cover {
-//     margin-top: rem(-254);
-//     padding-bottom: rem(32);
-//     height: 100vh;
-//     min-height: 600px;
-//     background: center / cover no-repeat url('/images/main-page-plug.png');
-
-//     display: flex;
-//     align-items: flex-end;
-//     color: $color-white;
-
-//     @include media-breakpoint-down(md) {
-//         margin-top: rem(-264);
-//     }
-
-//     @include media-breakpoint-down(sm) {
-//         margin-top: rem(-274);
-//     }
-// }</style>
+</style>

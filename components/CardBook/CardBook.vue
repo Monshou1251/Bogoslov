@@ -48,7 +48,7 @@
                         data.hasBookmark ? 'favorites-active' : 'favorites'
                     "
                     @click="
-                        $emit('toggleBookmark', {
+                        $emit('toggleBookmarkBook', {
                             id: data.uuid,
                             hasBookmark: data.hasBookmark,
                         })

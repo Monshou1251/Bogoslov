@@ -42,7 +42,7 @@
                         data.hasBookmark ? 'favorites-active' : 'favorites'
                     "
                     @click="
-                        $emit('toggleBookmark', {
+                        $emit('toggleBookmarkMaterial', {
                             id: data.uuid,
                             hasBookmark: data.hasBookmark,
                         })
@@ -56,11 +56,13 @@
 <script>
 import ButtonUi from "../ui/ButtonUi/ButtonUi.vue";
 import CardType from "@/components/CardType/CardType.vue";
+import Icon from "../ui/Icon/Icon.vue";
 
 export default {
     components: {
         CardType,
         ButtonUi,
+        Icon
     },
 
     props: {
